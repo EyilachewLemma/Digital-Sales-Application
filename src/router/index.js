@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
-
-    {
-        path: '/',
+const routes = [{
+        path: '/page-container',
         name: 'PageContainer',
         component: () =>
             import ( /* webpackChunkName: "PageContainer" */ '../views/PageContainer.vue'),

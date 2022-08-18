@@ -2,14 +2,6 @@
   <div class="superContainer mx-2 mx-lg-5">
     <div class="my-3 d-flex">
       <div v-if="products.meta && products.data?.length && productCategory">{{products.meta?.from+'-'+products.meta?.to+' of '+products.meta?.total}} results for <span class="text-success">"{{productCategory}}"</span></div>
-      <!-- <div class="ms-auto">
-    <select class="form-select" aria-label="Default select example">
-  <option selected>Sort</option>
-  <option value="all">All</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-      </div> -->
     </div>
     <hr class="mb-0 pb-0">
     <div class="d-flex mb-4">

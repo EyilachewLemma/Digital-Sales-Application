@@ -50,11 +50,12 @@ export default {
     }
   },
   methods: {
-    async changeCategory(categoryId) {  
+    changeCategory(categoryId) {  
+      this.$router.push({name:'SolarCategory',params: { id: categoryId }})
        this.queryObject.id = categoryId
       this.queryObject.lang = this.lang || 'en'
       this.$store.dispatch("featchProducts", this.queryObject);        
-      this.$router.push({name:'SolarCategory',params: { id: categoryId }})
+      
       }
   },
 };

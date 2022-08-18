@@ -1,8 +1,6 @@
 <template>
-  <div class="px-3 pb-2 bg-white">
-    <Carousel :breakpoints="breakpoints" :settings="settings">
-      <Slide
-        v-for="featuredProduct in featuredProducts"
+<div class="p-4 d-flex w-100 flexContainer"> 
+   <div v-for="featuredProduct in featuredProducts"
         :key="featuredProduct.id" class="me-3"
       >
         <div class="carousel__item pb-3">
@@ -17,8 +15,7 @@
                 :src="featuredProduct.images?.path"
                 class="card-img-top img-fluid"
                 alt="product image"
-              />
-            
+              />           
 
             <div class="cardBody p-1">
               <div v-if="featuredProduct.description?.name?.length > 35" class="card-title fw-bold small">
@@ -40,54 +37,13 @@
             </router-link>
           </div>
         </div>
-      </Slide>
-
-      <template #addons>
-        <Navigation />
-      </template>
-    </Carousel>
+  </div>
   </div>
 </template>
 
 <script>
-// import { defineComponent } from "vue";
-import { Carousel, Navigation, Slide } from "vue3-carousel";
-import "vue3-carousel/dist/carousel.css";
 
 export default {
-  components: {
-    Carousel,
-    Slide,
-    Navigation,
-  },
-  data(){
-    return {
-    settings: {
-      itemsToShow: 4,
-      itemsToScroll: 1,
-      snapAlign: "center",
-    },
-    breakpoints: {
-      0: {
-        itemsToShow: 1,
-        snapAlign: "center",
-      },
-      576: {
-        itemsToShow: 2,
-        snapAlign: "center",
-      },
-      768: {
-        itemsToShow: 3,
-        snapAlign: "center",
-      },
-      992: {
-        itemsToShow: 4,
-        snapAlign: "start",
-      },
-    },
-  };
-
-  },
   computed: {
     featuredProducts() {
       return this.$store.getters.featuredProducts;
@@ -97,6 +53,18 @@ export default {
 </script>
 
 <style scoped>
+.flexContainer{
+  background-color: #fff;
+  overflow-x: scroll;
+}
+.flexContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.flexContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+} 
 .carousel__prev--in-active,
 .carousel__next--in-active {
   display: none;

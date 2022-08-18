@@ -90,10 +90,6 @@
           <img :src="category.image" class="img-fluid rounded" alt="category image" />
           <div class="cardBody w-100">
             <div class="fw-bold text-white text-center">{{category.title}}</div>
-            <!-- <div class="text-white">
-              Reach out to solar shop near to
-              <div class="text-white mb-3">Your home</div>
-            </div> -->
             <button @click="gotoCategory(category.id)" class=" bg-white border rounded shadow-sm p-2 text-decoration-none mt-5 ms-5">{{$t("SeeMore",$store.getters.lang)}}</button>
             
           </div>
@@ -119,9 +115,6 @@ export default {
       }
     }
   },
-  created() {   
-    
-  },
     // this.$store.dispatch("featchFeaturedProduct")
   computed: {
     featuredProducts() {
@@ -138,51 +131,11 @@ export default {
       this.$router.push({ name: "StoreLocator" });
     },
     gotoCategory(id){
+      this.$router.push({ name: "SolarCategory", params: { id: id }});
       this.queryObject.id = id
     this.queryObject.lang = localStorage.getItem('lang') || 'en'
     this.$store.dispatch("featchProducts",this.queryObject);
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
-    },
-    solarHomeSystem() {
-      var id;
-      this.categories.forEach(category=>{
-        if(category.title === "Solar Home"){
-          id = category.id
-          this.$store.commit('setCategoryId',category.id)
-        }
-      })
-       this.queryObject.id = id
-    this.queryObject.lang = localStorage.getItem('lang')
-    this.$store.dispatch("featchProducts",this.queryObject);
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
-    },
-    solarTvSystem() {
-       var id;
-      this.categories.forEach(category=>{
-        if(category.title === "Solar Tv"){
-          id = category.id
-           this.$store.commit('setCategoryId',category.id)
-        }
-      })
-        this.queryObject.id = id
-    this.queryObject.lang = localStorage.getItem('lang')
-    this.$store.dispatch("featchProducts",this.queryObject);
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
-    },
-    solarPumpSystem() {
-       var id;
-      this.categories.forEach(category=>{
-        if(category.title === "Solar water pump"){
-          id = category.id
-           this.$store.commit('setCategoryId',category.id)
-        }
-      })
-        this.queryObject.id = id
-    this.queryObject.lang = localStorage.getItem('lang')
-    this.$store.dispatch("featchProducts",this.queryObject);
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
-      this.$router.push({ name: "SolarCategory", params: { id: id }});
+      
     },
   },
 };
