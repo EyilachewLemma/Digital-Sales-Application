@@ -22,40 +22,6 @@
           </label>
         </div>
         </div>
-        <!-- brands -->
-        <!-- <div class="border-bottom p-3">
-        <div class="ms-2 mt-2 mb-2 fw-bold">Brand</div>
-        <div class="form-check mb-1" v-for="n in 3" :key="n">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="brand"
-            :value="n"
-            :id="n"
-            v-model="brand"
-          />
-          <label class="form-check-label small" for="brand">
-            WEYZE
-          </label>
-        </div>
-        </div> -->
-        <!-- price -->
-        <!-- <div class="border-bottom p-3">
-        <div class="ms-2 mt-2 mb-2 fw-bold">Price</div>
-        <div class="form-check mb-1" v-for="n in 3" :key="n">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="price"
-            :value="n"
-            :id="n"
-            v-model="price"
-          />
-          <label class="form-check-label small" for="price">
-            2000-5000 ETB
-          </label>
-        </div>
-        </div> -->
       </div>
       <!-- product list section -->
       <div
@@ -67,7 +33,7 @@
             v-for="product in products.data"
             :key="product.id"
           >
-            <div class="card">
+            <div class="card border p-4">
               <router-link
                 :to="{
                   name: 'ProductDetail',
@@ -86,31 +52,10 @@
                 <div v-if="product.description?.length > 50">{{ product.description.slice(0, 50) }}</div>
                  <div v-else>{{ product.description}}</div>
                  <div class="rating">
-                  {{
-                    averageRatings(
-                      product.five_star,
-                      product.four_star,
-                      product.three_star,
-                      product.two_star,
-                      product.one_star,
-                      product.number_of_review
-                    )
-                  }}
-                  <span v-if="fullStar > 0">
-                    <span v-for="star in fullStar" :key="star" class="me-2"
-                      ><i class="fa-solid fa-star"></i
-                    ></span>
-                  </span>
-                  <span v-if="emptyStar > 0">
-                    <span v-for="star in emptyStar" :key="star" class="me-2"
-                      ><i class="far fa-star"></i
-                    ></span>
-                  </span>
-                  <span class="text-black ms-2"
-                    >{{ product.number_of_review }} {{$t('numOfReview',$store.getters.lang)}}</span
-                  >
+                  <p class="mt-2 mb-1 text-center text-success fw-bold"
+                    >{{ product.number_of_review }} {{$t('numOfReview',$store.getters.lang)}}</p>
                 </div>
-                <div class="ms-4 d-flex mt-1 text-danger">{{ product.price }} {{$t('priceUnit',$store.getters.lang)}}</div>
+                <div class="text-danger text-center">{{ product.price }} {{$t('priceUnit',$store.getters.lang)}}</div>
                 
               </div>
               </router-link>
@@ -202,44 +147,18 @@ export default {
       })
       
     },
-    averageRatings(
-      fiveStar,
-      fourStar,
-      threeStar,
-      twoStar,
-      oneStar,
-      noReviewers
-    ) {
-      var averageRating;
-
-      if (noReviewers > 0) {
-        averageRating = Math.floor(
-          (fiveStar * 5 +
-            fourStar * 4 +
-            threeStar * 3 +
-            twoStar * 2 +
-            oneStar) /
-            noReviewers
-        );
-        this.emptyStar = 5 - averageRating;
-        this.fullStar = averageRating;
-      } else {
-        this.emptyStar = 5;
-        this.fullStar = 0;
-      }
-    },
-    addToCart(product) {
-       var cartItem = {};
-          cartItem.id = product.id;
-          cartItem.name = product.name;
-          cartItem.price = product.price;
-          cartItem.path = product.images.path;
-          cartItem.qty = 1;
-          console.log('added product from category =',cartItem)
-          this.$store.commit("setCartItems", cartItem);
-          this.$toast.success('product added to the cart')
+    // addToCart(product) {
+    //    var cartItem = {};
+    //       cartItem.id = product.id;
+    //       cartItem.name = product.name;
+    //       cartItem.price = product.price;
+    //       cartItem.path = product.images.path;
+    //       cartItem.qty = 1;
+    //       console.log('added product from category =',cartItem)
+    //       this.$store.commit("setCartItems", cartItem);
+    //       this.$toast.success('product added to the cart')
        
-    },
+    // },
     loadMore(){
       this.pageCounter +=1
       this.queryObject.per_page = 6 * this.pageCounter
