@@ -70,7 +70,12 @@
           ><i class="fa-brands fa-youtube-square"></i></span
       ></a>
     </div>
+    
   </div>
+  <div class="text-center p-3 copyright">
+      <span class="text-white">&copy;{{getYear()}}</span>
+      <span class="ms-5 text-white">developed by  <a href="https://merahitechnologies.com/" class="text-primary">merahitechnologies</a></span>
+    </div>
 </template>
 <script>
 import apiClient from '../resource/baseurl';
@@ -128,6 +133,10 @@ export default {
       }
    }
     },
+    getYear(){
+      var date = new Date()
+      return date.getFullYear()
+    }
   },
 };
 </script>
@@ -159,6 +168,9 @@ a {
 .warning span {
   display: inline;
   color: red;
+}
+.copyright{
+  background-color: #0f1c23;
 }
 @media (max-width: 992px) {
   .textCenter {

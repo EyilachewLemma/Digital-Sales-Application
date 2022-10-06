@@ -1,6 +1,7 @@
 import axios from "axios";
 const apiClient = axios.create({
-    baseURL: 'https://rensys-laravel.merahitechnologies.com/',
+        baseURL: 'https://marketing.rensysengineering.com/',
+        // baseURL: 'https://rensys-laravel.merahitechnologies.com/',    
     // baseURL: 'http://192.168.0.8:8000',
 
     headers: {

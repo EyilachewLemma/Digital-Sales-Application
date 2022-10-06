@@ -11,7 +11,7 @@ import VueGoogleMaps from '@fawmi/vue-google-maps'
 
 createApp(App).use(store).use(router).use(i18n).use(Toaster, { position: 'bottom-right' }).use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyBuMJ86uj9D-3vqFDgrD0vcdj39LZ-G1og',
+        key: '',
         language: 'en',
     },
 }).mount('#app')
